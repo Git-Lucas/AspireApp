@@ -3,14 +3,14 @@ using AspireApp.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddRedisOutputCache("cache");
+
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
-builder.Services.AddOutputCache();
 
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
